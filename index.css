@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme Variables */
+:root {
+  --bg-primary: #18181b;
+  --bg-secondary: #27272a;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+}
+
+:root.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f4f5;
+  --text-primary: #18181b;
+  --text-secondary: #71717a;
+}
+
+/* Base Styles */
+@layer base {
+  body {
+    @apply antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+  
+  ::selection {
+    @apply bg-gold/30 text-white;
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes progress {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+  50% {
+    width: 60%;
+    opacity: 0.8;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease forwards;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
+
+  .animate-progress {
+    animation: progress 3s ease-in-out forwards;
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.3s ease forwards;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+/* Scrollbar Styles */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar for non-hidden scrollbars */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-zinc-900;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-zinc-800/50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-700 rounded-full hover:bg-zinc-600 transition-colors;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-zinc-600 rounded-full hover:bg-zinc-500 transition-colors;
+}
+
+/* Glass Effect */
+.glass-effect {
+  @apply backdrop-blur-lg;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+}
+
+/* Message Bubbles */
+.message-bubble {
+  @apply relative rounded-2xl px-6 py-4 transition-all duration-200 backdrop-blur-sm;
+  width: fit-content;
+}
+
+.message-bubble.user {
+  background: var(--primary-color);
+  color: var(--bg-color);
+}
+
+.message-bubble.ai {
+  background: var(--surface-color);
+  color: var(--text-color);
+}
+
+/* Input Styles */
+.chat-input {
+  @apply w-full placeholder-zinc-400 
+         rounded-lg py-4 px-4 pr-24 resize-none transition-all duration-200
+         focus:outline-none focus:ring-1;
+  background: var(--surface-color);
+  color: var(--text-color);
+}
+
+/* Button Styles */
+.icon-button {
+  @apply p-3 rounded-lg transition-all duration-200
+         hover:bg-zinc-700/50 active:scale-95;
+}
